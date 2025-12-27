@@ -109,9 +109,6 @@ bindsym $mod+Return exec $term
 # Tarayıcı
 bindsym $mod+b exec zen-browser
 
-# Dosya yöneticisi
-bindsym $mod+f exec dolphin
-
 # Not alma
 bindsym $mod+o exec obsidian
 
@@ -207,7 +204,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 
 # ===== KEYBINDINGS - SCRATCHPAD =====
 bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
+bindsym $mod+t scratchpad show
 
 # ===== KEYBINDINGS - RESIZE MODE =====
 mode "resize" {
@@ -258,10 +255,10 @@ bindsym $mod+Shift+p exec mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp)" 
 assign [app_id="zen"] $ws1
 assign [class="obsidian"] $ws3
 assign [app_id="spotify"] $ws2
-assign [app_id="cava-window"] $ws2
+#assign [app_id="cava-window"] $ws2
 
 # ------cava------
-exec sleep 8 && alacritty --class "cava-window" -e cava
+#exec sleep 8 && alacritty --class "cava-window" -e cava
 
 # Floating pencereler
 for_window [app_id="copyq"] floating enable, resize set 400 500, move position center
@@ -305,3 +302,13 @@ include /etc/sway/config.d/*
 
 # Sway ayağa kalktıktan 5 saniye sonra config'i reload eder
 exec sleep 5 && swaymsg reload
+
+#-----kde connect------
+exec --no-startup-id kdeconnectd
+
+
+# Dosya yöneticisi değişkenini tanımla
+set $file_manager nemo
+
+# Kısayol tuşu ata (Genelde Mod+E kullanılır)
+bindsym $mod+f exec $file_manager
