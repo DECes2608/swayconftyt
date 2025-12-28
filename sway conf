@@ -267,10 +267,11 @@ for_window [app_id="blueman-manager"] floating enable, resize set 600 400, move 
 for_window [app_id="org.Waytrogen.Waytrogen"] floating enable, resize set 400 500, move position center
 
 # ===== AUTOSTART =====
-# Wallpaper
-exec_always --no-startup-id pkill swaybg; swaybg -i /home/deces/Resimler/wallpaper/eva.png -m fill
+#wallpaper
+exec_always --no-startup-id swww-daemon
+exec_always --no-startup-id waytrogen --restore
 
-# Waybar (düzeltilmiş)
+# waybar
 exec_always pkill waybar; waybar
 
 # Bluetooth applet
@@ -308,7 +309,12 @@ exec --no-startup-id kdeconnectd
 
 
 # Dosya yöneticisi değişkenini tanımla
-set $file_manager nemo
+set $file_manager nautilus
 
 # Kısayol tuşu ata (Genelde Mod+E kullanılır)
 bindsym $mod+f exec $file_manager
+
+# WARP'ı hızlıca bağla/kes
+bindsym $mod+Shift+m exec warp-cli connect
+bindsym $mod+Shift+n exec warp-cli disconnect
+
