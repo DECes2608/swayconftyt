@@ -1,8 +1,5 @@
-# =====================================================
-# SWAY CONFIG - İYİLEŞTİRİLMİŞ VERSİYON
-# =====================================================
 
-# ===== VARIABLES =====
+# ===== Basit setler =====
 set $mod Mod4
 set $left h
 set $down j
@@ -20,7 +17,7 @@ set $ws6 "6:?"
 set $ws7 "7:?"
 set $ws8 "8:?"
 
-# ===== INPUT CONFIGURATION =====
+# ===== Giriş aygıtları =====
 input type:touchpad {
     dwt enabled
     tap enabled
@@ -49,7 +46,7 @@ output HDMI-A-1 {
     scale 1
 }
 
-# ===== WORKSPACE TO OUTPUT ASSIGNMENT =====
+# ===== Çalışma alanı atamaları =====
 workspace $ws1 output "HDMI-A-1"
 workspace $ws5 output "eDP-1"
 workspace $ws2 output "HDMI-A-1"
@@ -59,7 +56,7 @@ workspace $ws7 output "eDP-1"
 workspace $ws4 output "HDMI-A-1"
 workspace $ws8 output "eDP-1"
 
-# ===== STYLING =====
+# ===== Şekil şukul =====
 # Font
 font pango:JetBrainsMono Nerd Font 10
 
@@ -72,7 +69,7 @@ client.focused          #444444 #444444 #ffffff #444444   #444444
 client.focused_inactive #222222 #222222 #888888 #222222   #222222
 client.unfocused        #222222 #222222 #888888 #222222   #222222
 
-# ===== KEYBINDINGS - SYSTEM =====
+# ===== sistem kılavye atamaları =====
 # Reload config
 bindsym $mod+Shift+r reload
 
@@ -96,7 +93,7 @@ mode $power_mode {
     bindsym Escape mode "default"
 }
 
-# ===== KEYBINDINGS - APPLICATIONS =====
+# ===== kişileştirilmiş klavye atamaları =====
 # Uygulama başlatıcı
 bindsym $mod+d exec rofi -show drun
 
@@ -131,7 +128,7 @@ bindsym $mod+Shift+w exec ps -u $USER -o comm | sort -u | rofi -dmenu -p "Kill P
 bindsym $mod+Shift+c exec $term -e cava
 bindsym $mod+Shift+i exec $term -e cmatrix
 
-# ===== KEYBINDINGS - WINDOW MANAGEMENT =====
+# ===== pencere yönetimi kısayolları =====
 # Pencere kapat
 bindsym $mod+q kill
 
@@ -168,7 +165,7 @@ bindsym $mod+Shift+f fullscreen
 # Floating/tiling geçişi
 bindsym $mod+space floating toggle
 
-# ===== KEYBINDINGS - WORKSPACES =====
+# ===== çalışma alanı klavye atamalrı =====
 # Workspace'lere geçiş
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -189,7 +186,7 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 
-# ===== KEYBINDINGS - RESIZE MODE =====
+# ===== resize klavye atamaları =====
 mode "resize" {
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
@@ -206,7 +203,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# ===== KEYBINDINGS - MEDIA CONTROLS =====
+# ===== media kontrol atamaları =====
 # Ses kontrolü (düzeltilmiş - bildirimli)
 bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -233,7 +230,7 @@ bindsym Print exec grim -g "$(slurp)" - | wl-copy
 # Seçili alan screenshot (dosyaya)
 bindsym $mod+Shift+p exec mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d-%H%M%S).png
 
-# ===== WINDOW RULES =====
+# ===== pencere kuralları =====
 # Uygulama atama
 assign [app_id="zen"] $ws1
 assign [class="obsidian"] $ws2
@@ -249,7 +246,7 @@ for_window [class="copyq"] floating enable, resize set 400 500, move position ce
 for_window [app_id="blueman-manager"] floating enable, resize set 600 400, move position center
 for_window [app_id="org.Waytrogen.Waytrogen"] floating enable, resize set 600 900, move position center
 
-# ===== AUTOSTART =====
+# ===== otomatik başlatma =====
 #wallpaper
 exec_always --no-startup-id pkill swaybg; swaybg -i /home/deces/Resimler/wallpaper/eva.png -m fill
 #exec_always --no-startup-id swww-daemon
