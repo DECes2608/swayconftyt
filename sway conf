@@ -11,14 +11,14 @@ set $right l
 set $term alacritty
 
 # Workspace isimleri (düzeltilmiş)
-set $ws1 "1:Browser"
-set $ws2 "2:Music"
-set $ws3 "3:Notes"
-set $ws4 "4:Files"
-set $ws5 "5:Steam"
-set $ws6 "6:Chat"
-set $ws7 "7"
-set $ws8 "8"
+set $ws1 "1:Tarayıcı"
+set $ws2 "2:Notlar"
+set $ws3 "3:Term"
+set $ws4 "4:Oyun"
+set $ws5 "5:Müzik"
+set $ws6 "6:?"
+set $ws7 "7:?"
+set $ws8 "8:?"
 
 # ===== INPUT CONFIGURATION =====
 input type:touchpad {
@@ -51,12 +51,12 @@ output HDMI-A-1 {
 
 # ===== WORKSPACE TO OUTPUT ASSIGNMENT =====
 workspace $ws1 output "HDMI-A-1"
-workspace $ws2 output "eDP-1"
-workspace $ws3 output "HDMI-A-1"
-workspace $ws4 output "eDP-1"
-workspace $ws5 output "HDMI-A-1"
+workspace $ws5 output "eDP-1"
+workspace $ws2 output "HDMI-A-1"
 workspace $ws6 output "eDP-1"
-workspace $ws7 output "HDMI-A-1"
+workspace $ws3 output "HDMI-A-1"
+workspace $ws7 output "eDP-1"
+workspace $ws4 output "HDMI-A-1"
 workspace $ws8 output "eDP-1"
 
 # ===== STYLING =====
@@ -85,15 +85,12 @@ bindsym $mod+Shift+Control+e exec swaymsg exit
 bindsym $mod+Shift+l exec swaylock -f -c 000000
 
 # Güç yönetimi menüsü (tuşlar düzeltildi)
-set $power_mode "Power: [L]ock [E]xit [S]uspend [R]eboot [P]oweroff"
+set $power_mode "Power: [R]eboot [S]hutdown
 bindsym $mod+Shift+q mode $power_mode
 
 mode $power_mode {
-    bindsym Shift+l exec swaylock -f -c 000000, mode "default"
-    bindsym Shift+e exec swaymsg exit, mode "default"
-    bindsym Shift+s exec systemctl suspend, mode "default"
     bindsym Shift+r exec systemctl reboot, mode "default"
-    bindsym Shift+p exec systemctl poweroff, mode "default"
+    bindsym Shift+s exec systemctl poweroff, mode "default"
     
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -131,8 +128,8 @@ bindsym $mod+Mod1+c exec rofi -show calc -modi calc -no-show-match -no-sort -cal
 bindsym $mod+Shift+w exec ps -u $USER -o comm | sort -u | rofi -dmenu -p "Kill Process:" | xargs killall
 
 # Terminal eğlence
-bindsym $mod+c exec $term -e cava
-bindsym $mod+i exec $term -e cmatrix
+bindsym $mod+Shift+c exec $term -e cava
+bindsym $mod+Shift+i exec $term -e cmatrix
 
 # ===== KEYBINDINGS - WINDOW MANAGEMENT =====
 # Pencere kapat
@@ -169,17 +166,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+Shift+f fullscreen
 
 # Floating/tiling geçişi
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
-
-# Split toggle
-bindsym $mod+slash split toggle
-
-# Layout değiştir
-bindsym $mod+e layout toggle split
-
-# Parent container'a odaklan
-bindsym $mod+a focus parent
+bindsym $mod+space floating toggle
 
 # ===== KEYBINDINGS - WORKSPACES =====
 # Workspace'lere geçiş
@@ -201,10 +188,6 @@ bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
-
-# ===== KEYBINDINGS - SCRATCHPAD =====
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+t scratchpad show
 
 # ===== KEYBINDINGS - RESIZE MODE =====
 mode "resize" {
@@ -253,9 +236,9 @@ bindsym $mod+Shift+p exec mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp)" 
 # ===== WINDOW RULES =====
 # Uygulama atama
 assign [app_id="zen"] $ws1
-assign [class="obsidian"] $ws3
-assign [app_id="spotify"] $ws2
-#assign [app_id="cava-window"] $ws2
+assign [class="obsidian"] $ws2
+assign [app_id="spotify"] $ws5
+#assign [app_id="cava-window"] $ws5
 
 # ------cava------
 #exec sleep 8 && alacritty --class "cava-window" -e cava
@@ -264,15 +247,17 @@ assign [app_id="spotify"] $ws2
 for_window [app_id="copyq"] floating enable, resize set 400 500, move position center
 for_window [class="copyq"] floating enable, resize set 400 500, move position center
 for_window [app_id="blueman-manager"] floating enable, resize set 600 400, move position center
-for_window [app_id="org.Waytrogen.Waytrogen"] floating enable, resize set 400 500, move position center
+for_window [app_id="org.Waytrogen.Waytrogen"] floating enable, resize set 600 900, move position center
 
 # ===== AUTOSTART =====
 #wallpaper
-exec_always --no-startup-id swww-daemon
-exec_always --no-startup-id waytrogen --restore
+exec_always --no-startup-id pkill swaybg; swaybg -i /home/deces/Resimler/wallpaper/eva.png -m fill
+#exec_always --no-startup-id swww-daemon
+#exec_always --no-startup-id waytrogen --restore
 
 # waybar
 exec_always pkill waybar; waybar
+#exec_always pkill quickshell; quickshell
 
 # Bluetooth applet
 exec --no-startup-id blueman-applet
@@ -288,7 +273,7 @@ exec --no-startup-id swaymsg workspace $ws1
 
 # Uygulamaları sırayla başlat (düzeltilmiş)
 exec --no-startup-id zen-browser
-exec sleep 2 && obsidian
+#exec sleep 2 && obsidian
 exec sleep 4 && spotify-launcher
 
 # Idle management (opsiyonel - swayidle kurulu olmalı)
@@ -317,4 +302,4 @@ bindsym $mod+f exec $file_manager
 # WARP'ı hızlıca bağla/kes
 bindsym $mod+Shift+m exec warp-cli connect
 bindsym $mod+Shift+n exec warp-cli disconnect
-
+exec --no-startup-id cloudflare-zero-trust
