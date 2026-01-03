@@ -1,5 +1,5 @@
-#------style-----
-{
+/* Her şeyi sıfırla ve temizle */
+* {
     border: none;
     border-radius: 0;
     font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
@@ -9,17 +9,17 @@
 
 /* Ana Bar */
 window#waybar {
-    background-color: rgba(26, 27, 38, 0.95); /* Tokyo Night Arka Plan */
-    border-bottom: 2px solid #414868;
+    background-color: rgba(1, 2, 5, 0); /* Tokyo Night Arka Plan */
+    border-bottom: 0px solid #1a1b26;
     color: #c0caf5;
     transition-property: background-color;
-    transition-duration: .5s;
+    transition-duration: 0s;
 }
 
 /* Workspace'ler (En çok hata burada çıkar, seçicilere dikkat) */
 #workspaces {
     margin: 4px;
-    background-color: #24283b;
+    background-color: #070721;
     border-radius: 8px;
 }
 
@@ -42,15 +42,15 @@ window#waybar {
 #clock, #battery, #pulseaudio, #network, #cpu, #memory, #backlight, #language, #tray, #custom-mem {
     padding: 0 12px;
     margin: 4px 2px;
-    background-color: #24283b;
+    background-color: #090440;
     border-radius: 8px;
 }
 
 /* Özel Renk Vurguları */
-#clock { color: #9ece6a; }
+#clock { color: #5292D1; }
 #pulseaudio { color: #e0af68; }
 #battery { color: #73daca; }
 #battery.charging { color: #9ece6a; }
 #battery.critical:not(.charging) { color: #f7768e; }
 #backlight { color: #bb9af7; }
-#tray { background-color: #1a1b26; }
+#tray { background-color: #090440; }
