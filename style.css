@@ -9,29 +9,29 @@
 
 /* Ana Bar */
 window#waybar {
-    background-color: rgba(1, 2, 5, 0); /* Tokyo Night Arka Plan */
+    background-color: rgba(125, 207, 255, 0); /* Tokyo Night Arka Plan */
     border-bottom: 0px solid #1a1b26;
     color: #c0caf5;
     transition-property: background-color;
     transition-duration: 0s;
 }
 
-/* Workspace'ler (En çok hata burada çıkar, seçicilere dikkat) */
+/* Workspace */
 #workspaces {
     margin: 4px;
-    background-color: #070721;
+    background-color: #414868;
     border-radius: 8px;
 }
 
 #workspaces button {
     padding: 0 8px;
-    color: #565f89;
+    color: #cfc9c2;
 }
 
 #workspaces button.focused {
-    color: #7aa2f7;
-    background-color: #414868;
-    border-bottom: 2px solid #7aa2f7;
+    color: #3b4252;
+    background-color: #82aaff;
+    border-bottom: 2px solid #82aaff;
 }
 
 #workspaces button.urgent {
@@ -42,15 +42,17 @@ window#waybar {
 #clock, #battery, #pulseaudio, #network, #cpu, #memory, #backlight, #language, #tray, #custom-mem {
     padding: 0 12px;
     margin: 4px 2px;
-    background-color: #090440;
+    background-color: #414868;
     border-radius: 8px;
 }
 
 /* Özel Renk Vurguları */
-#clock { color: #5292D1; }
-#pulseaudio { color: #e0af68; }
-#battery { color: #73daca; }
+#clock { color: #cfc9c2; }
+#pulseaudio { color: #cfc9c2; }
+#battery { color: #cfc9c2; }
 #battery.charging { color: #9ece6a; }
 #battery.critical:not(.charging) { color: #f7768e; }
-#backlight { color: #bb9af7; }
-#tray { background-color: #090440; }
+#backlight { color: #cfc9c2; }
+#tray { background-color: #414868; }
+#language { color: #cfc9c2; }
+#custom-mem { color: #cfc9c2; }
