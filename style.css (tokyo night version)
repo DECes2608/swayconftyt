@@ -1,5 +1,4 @@
-/* Her şeyi sıfırla ve temizle */
-* {
+{
     border: none;
     border-radius: 0;
     font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
