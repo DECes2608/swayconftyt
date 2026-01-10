@@ -1,5 +1,4 @@
-
-# ===== Basit setler =====
+# ===== VARIABLES =====
 set $mod Mod4
 set $left h
 set $down j
@@ -13,11 +12,14 @@ set $ws2 "2:Notlar"
 set $ws3 "3:Term"
 set $ws4 "4:Oyun"
 set $ws5 "5:Müzik"
-set $ws6 "6:?"
-set $ws7 "7:?"
-set $ws8 "8:?"
+set $ws6 "6:none"
+set $ws7 "7:none"
+set $ws8 "8:none"
+set $ws9 "9:none"
+set $ws10 "10:none"
 
-# ===== Giriş aygıtları =====
+
+# ===== INPUT CONFIGURATION =====
 input type:touchpad {
     dwt enabled
     tap enabled
@@ -46,30 +48,30 @@ output HDMI-A-1 {
     scale 1
 }
 
-# ===== Çalışma alanı atamaları =====
+# ===== WORKSPACE TO OUTPUT ASSIGNMENT =====
 workspace $ws1 output "HDMI-A-1"
 workspace $ws5 output "eDP-1"
 workspace $ws2 output "HDMI-A-1"
 workspace $ws6 output "eDP-1"
 workspace $ws3 output "HDMI-A-1"
-workspace $ws7 output "eDP-1"
+#workspace $ws7 output "eDP-1"
 workspace $ws4 output "HDMI-A-1"
-workspace $ws8 output "eDP-1"
+#workspace $ws8 output "eDP-1"
 
-# ===== Şekil şukul =====
+# ===== STYLING =====
 # Font
 font pango:JetBrainsMono Nerd Font 10
 
 # Pencere kenarları (başlık çubuğu kaldırıldı)
-default_border pixel 2
-default_floating_border pixel 2
+default_border pixel 3
+default_floating_border pixel 3
 
 # Renkler
 client.focused          #444444 #444444 #ffffff #444444   #444444
 client.focused_inactive #222222 #222222 #888888 #222222   #222222
 client.unfocused        #222222 #222222 #888888 #222222   #222222
 
-# ===== sistem kılavye atamaları =====
+# ===== KEYBINDINGS - SYSTEM =====
 # Reload config
 bindsym $mod+Shift+r reload
 
@@ -79,21 +81,21 @@ bindsym $mod+Shift+Control+r exec reboot
 bindsym $mod+Shift+Control+e exec swaymsg exit
 
 # Ekran kilitleme (swaylock kurulu olmalı)
-bindsym $mod+Shift+l exec swaylock -f -c 000000
+#bindsym $mod+Shift+l exec swaylock -f -c 000000
 
 # Güç yönetimi menüsü (tuşlar düzeltildi)
-set $power_mode "Power: [R]eboot [S]hutdown
+set $power_mode "Power: [R]eboot [S]hutdown [L]ock"
 bindsym $mod+Shift+q mode $power_mode
 
 mode $power_mode {
     bindsym Shift+r exec systemctl reboot, mode "default"
     bindsym Shift+s exec systemctl poweroff, mode "default"
-    
+    bindsym Shift+l exec swaymsg exit, mode "defauld"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 
-# ===== kişileştirilmiş klavye atamaları =====
+# ===== KEYBINDINGS - APPLICATIONS =====
 # Uygulama başlatıcı
 bindsym $mod+d exec rofi -show drun
 
@@ -102,6 +104,8 @@ bindsym $mod+Return exec $term
 
 # Tarayıcı
 bindsym $mod+b exec zen-browser
+
+bindsym $mod+Shift+b exec brave
 
 # Not alma
 bindsym $mod+o exec obsidian
@@ -128,7 +132,7 @@ bindsym $mod+Shift+w exec ps -u $USER -o comm | sort -u | rofi -dmenu -p "Kill P
 bindsym $mod+Shift+c exec $term -e cava
 bindsym $mod+Shift+i exec $term -e cmatrix
 
-# ===== pencere yönetimi kısayolları =====
+# ===== KEYBINDINGS - WINDOW MANAGEMENT =====
 # Pencere kapat
 bindsym $mod+q kill
 
@@ -165,7 +169,7 @@ bindsym $mod+Shift+f fullscreen
 # Floating/tiling geçişi
 bindsym $mod+space floating toggle
 
-# ===== çalışma alanı klavye atamalrı =====
+# ===== KEYBINDINGS - WORKSPACES =====
 # Workspace'lere geçiş
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -175,6 +179,9 @@ bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
 
 # Pencereyi workspace'e taşı
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -185,8 +192,9 @@ bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
-
-# ===== resize klavye atamaları =====
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+# ===== KEYBINDINGS - RESIZE MODE =====
 mode "resize" {
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
@@ -201,9 +209,9 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+#bindsym $mod+r mode "resize"
 
-# ===== media kontrol atamaları =====
+# ===== KEYBINDINGS - MEDIA CONTROLS =====
 # Ses kontrolü (düzeltilmiş - bildirimli)
 bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -230,8 +238,9 @@ bindsym Print exec grim -g "$(slurp)" - | wl-copy
 # Seçili alan screenshot (dosyaya)
 bindsym $mod+Shift+p exec mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d-%H%M%S).png
 
-# ===== pencere kuralları =====
+# ===== WINDOW RULES =====
 # Uygulama atama
+#assign [app_id="brave"] $ws1
 assign [app_id="zen"] $ws1
 assign [class="obsidian"] $ws2
 assign [app_id="spotify"] $ws5
@@ -246,13 +255,13 @@ for_window [class="copyq"] floating enable, resize set 400 500, move position ce
 for_window [app_id="blueman-manager"] floating enable, resize set 600 400, move position center
 for_window [app_id="org.Waytrogen.Waytrogen"] floating enable, resize set 600 900, move position center
 
-# ===== otomatik başlatma =====
+# ===== AUTOSTART =====
 #wallpaper
-exec_always --no-startup-id pkill swaybg; swaybg -i /home/deces/Resimler/wallpaper/eva.png -m fill
+exec_always --no-startup-id pkill swaybg; swaybg -i /home/deces/wallpaper/frieren.png -m fill
 #exec_always --no-startup-id swww-daemon
 #exec_always --no-startup-id waytrogen --restore
 
-# waybar
+#------- waybar ---------
 exec_always pkill waybar; waybar
 #exec_always pkill quickshell; quickshell
 
@@ -269,9 +278,9 @@ exec wlsunset -l 39.5 -L 27.0 -t 3500 -T 6500
 exec --no-startup-id swaymsg workspace $ws1
 
 # Uygulamaları sırayla başlat (düzeltilmiş)
-exec --no-startup-id zen-browser
+#exec --no-startup-id zen-browser
 #exec sleep 2 && obsidian
-exec sleep 4 && spotify-launcher
+#exec sleep 4 && spotify-launcher
 
 # Idle management (opsiyonel - swayidle kurulu olmalı)
 # exec swayidle -w \
@@ -283,8 +292,8 @@ exec sleep 4 && spotify-launcher
 # ===== INCLUDE =====
 include /etc/sway/config.d/*
 
-# Sway ayağa kalktıktan 5 saniye sonra config'i reload eder
-exec sleep 5 && swaymsg reload
+# Sway direkt yenilenir
+exec --no-startup-id swaymsg reload
 
 #-----kde connect------
 exec --no-startup-id kdeconnectd
@@ -299,4 +308,16 @@ bindsym $mod+f exec $file_manager
 # WARP'ı hızlıca bağla/kes
 bindsym $mod+Shift+m exec warp-cli connect
 bindsym $mod+Shift+n exec warp-cli disconnect
-exec --no-startup-id cloudflare-zero-trust
+#exec --no-startup-id cloudflare-zero-trust
+
+
+# Pencereler arası boşluk
+gaps inner 10
+gaps outer 0
+
+# Sadece birden fazla pencere varsa boşluk
+#smart_gaps on
+
+# Default layout
+workspace_layout default
+exec_always --no-startup-id autotiling
