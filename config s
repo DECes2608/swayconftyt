@@ -1,4 +1,4 @@
-# ===== VARIABLES =====
+# basit setler
 set $mod Mod4
 set $left h
 set $down j
@@ -6,7 +6,7 @@ set $up k
 set $right l
 set $term alacritty
 
-# Workspace isimleri (düzeltilmiş)
+# Workspace isimleri
 set $ws1 "1:Tarayıcı"
 set $ws2 "2:Notlar"
 set $ws3 "3:Term"
@@ -19,7 +19,7 @@ set $ws9 "9:none"
 set $ws10 "10:none"
 
 
-# ===== INPUT CONFIGURATION =====
+# ş aygıtlarının yapılandırması
 input type:touchpad {
     dwt enabled
     tap enabled
@@ -35,7 +35,7 @@ input "12538:4160:INSTANT_USB_GAMING_MOUSE" {
     pointer_accel -0.7
 }
 
-# ===== OUTPUT CONFIGURATION =====
+# çıkış aygıtlarının yapılandırması
 output eDP-1 {
     mode 1920x1080@60Hz
     position 1920,0
@@ -48,7 +48,7 @@ output HDMI-A-1 {
     scale 1
 }
 
-# ===== WORKSPACE TO OUTPUT ASSIGNMENT =====
+# Çalışma ortamı ekranara bölme
 workspace $ws1 output "HDMI-A-1"
 workspace $ws5 output "eDP-1"
 workspace $ws2 output "HDMI-A-1"
@@ -58,11 +58,10 @@ workspace $ws3 output "HDMI-A-1"
 workspace $ws4 output "HDMI-A-1"
 #workspace $ws8 output "eDP-1"
 
-# ===== STYLING =====
 # Font
 font pango:JetBrainsMono Nerd Font 10
 
-# Pencere kenarları (başlık çubuğu kaldırıldı)
+# Pencere kenarları
 default_border pixel 3
 default_floating_border pixel 3
 
@@ -71,7 +70,6 @@ client.focused          #444444 #444444 #ffffff #444444   #444444
 client.focused_inactive #222222 #222222 #888888 #222222   #222222
 client.unfocused        #222222 #222222 #888888 #222222   #222222
 
-# ===== KEYBINDINGS - SYSTEM =====
 # Reload config
 bindsym $mod+Shift+r reload
 
@@ -83,7 +81,7 @@ bindsym $mod+Shift+Control+e exec swaymsg exit
 # Ekran kilitleme (swaylock kurulu olmalı)
 #bindsym $mod+Shift+l exec swaylock -f -c 000000
 
-# Güç yönetimi menüsü (tuşlar düzeltildi)
+# Güç yönetimi menüsü
 set $power_mode "Power: [R]eboot [S]hutdown [L]ock"
 bindsym $mod+Shift+q mode $power_mode
 
@@ -94,8 +92,19 @@ mode $power_mode {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+# temalar için geçiş
+set $theme_mode "Theme: [D]ark [T]okyo"
 
-# ===== KEYBINDINGS - APPLICATIONS =====
+bindsym $mod+Shift+t mode $theme_mode
+
+mode $theme_mode {
+     bindsym Shift+d exec cp -r ~/.themes/d/style.css ~/.config/waybar/style.css && pkill -USR2 waybar, mode "default"
+     bindsym Shift+t exec cp -r ~/.themes/tn/style.css ~/.config/waybar/style.css && pkill -USR2 waybar, mode "default"
+     bindsym Return mode "default"
+     bindsym Escape mode "default"
+
+}
+
 # Uygulama başlatıcı
 bindsym $mod+d exec rofi -show drun
 
@@ -132,7 +141,6 @@ bindsym $mod+Shift+w exec ps -u $USER -o comm | sort -u | rofi -dmenu -p "Kill P
 bindsym $mod+Shift+c exec $term -e cava
 bindsym $mod+Shift+i exec $term -e cmatrix
 
-# ===== KEYBINDINGS - WINDOW MANAGEMENT =====
 # Pencere kapat
 bindsym $mod+q kill
 
@@ -169,7 +177,6 @@ bindsym $mod+Shift+f fullscreen
 # Floating/tiling geçişi
 bindsym $mod+space floating toggle
 
-# ===== KEYBINDINGS - WORKSPACES =====
 # Workspace'lere geçiş
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -194,7 +201,7 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
-# ===== KEYBINDINGS - RESIZE MODE =====
+
 mode "resize" {
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
@@ -211,7 +218,6 @@ mode "resize" {
 }
 #bindsym $mod+r mode "resize"
 
-# ===== KEYBINDINGS - MEDIA CONTROLS =====
 # Ses kontrolü (düzeltilmiş - bildirimli)
 bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -228,7 +234,6 @@ bindsym XF86AudioNext exec playerctl --player=spotify next
 bindsym XF86AudioPrev exec playerctl --player=spotify previous
 bindsym $mod+Shift+z exec playerctl --player=spotify play-pause
 
-# ===== KEYBINDINGS - SCREENSHOTS =====
 # Tam ekran screenshot
 bindsym $mod+p exec mkdir -p ~/Pictures/Screenshots && grim ~/Pictures/Screenshots/$(date +%Y-%m-%d-%H%M%S).png
 
@@ -238,7 +243,6 @@ bindsym Print exec grim -g "$(slurp)" - | wl-copy
 # Seçili alan screenshot (dosyaya)
 bindsym $mod+Shift+p exec mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d-%H%M%S).png
 
-# ===== WINDOW RULES =====
 # Uygulama atama
 #assign [app_id="brave"] $ws1
 assign [app_id="zen"] $ws1
@@ -279,7 +283,7 @@ exec wlsunset -l 39.5 -L 27.0 -t 3500 -T 6500
 # İlk workspace'e geç
 exec --no-startup-id swaymsg workspace $ws1
 
-# Uygulamaları sırayla başlat (düzeltilmiş)
+# Uygulamaları sırayla başlat
 #exec --no-startup-id zen-browser
 #exec sleep 2 && obsidian
 #exec sleep 4 && spotify-launcher
@@ -303,14 +307,11 @@ exec --no-startup-id kdeconnectd
 
 # Dosya yöneticisi değişkenini tanımla
 set $file_manager nautilus
-
-# Kısayol tuşu ata (Genelde Mod+E kullanılır)
 bindsym $mod+f exec $file_manager
 
 # WARP'ı hızlıca bağla/kes
 bindsym $mod+Shift+m exec warp-cli connect
 bindsym $mod+Shift+n exec warp-cli disconnect
-#exec --no-startup-id cloudflare-zero-trust
 
 
 # Pencereler arası boşluk
