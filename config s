@@ -12,7 +12,7 @@ set $ws2 "2:Notlar"
 set $ws3 "3:Term"
 set $ws4 "4:Oyun"
 set $ws5 "5:Müzik"
-set $ws6 "6:none"
+set $ws6 "6:Pomodoro"
 set $ws7 "7:none"
 set $ws8 "8:none"
 set $ws9 "9:none"
@@ -250,16 +250,18 @@ assign [app_id="spotify"] $ws5
 #exec sleep 8 && alacritty --class "cava-window" -e cava
 
 # Floating pencereler
+
 for_window [app_id="copyq"] floating enable, resize set 400 500, move position center
 for_window [class="copyq"] floating enable, resize set 400 500, move position center
 for_window [app_id="blueman-manager"] floating enable, resize set 600 400, move position center
 for_window [app_id="org.Waytrogen.Waytrogen"] floating enable, resize set 600 900, move position center
-
+for_window [app_id="waypaper"] floating enable, resize set 400 500, move position center
 # ===== AUTOSTART =====
 #wallpaper
-exec_always --no-startup-id pkill swaybg; swaybg -i /home/deces/wallpaper/frieren.png -m fill
-#exec_always --no-startup-id swww-daemon
-#exec_always --no-startup-id waytrogen --restore
+exec_always swww-daemon
+bindsym $mod+w exec waypaper
+exec_always waypaper --restore
+
 
 #------- waybar ---------
 exec_always pkill waybar; waybar
@@ -321,3 +323,4 @@ gaps outer 0
 # Default layout
 workspace_layout default
 exec_always --no-startup-id autotiling
+
