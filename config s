@@ -4,7 +4,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty
+set $term kitty
 
 # Workspace isimleri
 set $ws1 "1:Tarayıcı"
@@ -54,9 +54,9 @@ workspace $ws5 output "eDP-1"
 workspace $ws2 output "HDMI-A-1"
 workspace $ws6 output "eDP-1"
 workspace $ws3 output "HDMI-A-1"
-#workspace $ws7 output "eDP-1"
+workspace $ws7 output "eDP-1"
 workspace $ws4 output "HDMI-A-1"
-#workspace $ws8 output "eDP-1"
+workspace $ws8 output "eDP-1"
 
 # Font
 font pango:JetBrainsMono Nerd Font 10
@@ -93,13 +93,17 @@ mode $power_mode {
     bindsym Escape mode "default"
 }
 # temalar için geçiş
-set $theme_mode "Theme: [D]ark [T]okyo"
+set $theme_mode "Theme: [D]ark [T]okyo [P]ure"
 
 bindsym $mod+Shift+t mode $theme_mode
 
 mode $theme_mode {
      bindsym Shift+d exec cp -r ~/.themes/d/style.css ~/.config/waybar/style.css && pkill -USR2 waybar, mode "default"
      bindsym Shift+t exec cp -r ~/.themes/tn/style.css ~/.config/waybar/style.css && pkill -USR2 waybar, mode "default"
+     bindsym Shift+b exec cp -r ~/.themes/pb/style.css ~/.config/waybar/style.css && pkill -USR2 waybar, mode "default"
+     #bindsym Shift+t exec cp -r ~/.themes/tn/style.css ~/.config/waybar/style.css && pkill -USR2 waybar, mode "default"
+     #bindsym Shift+t exec cp -r ~/.themes/tn/style.css ~/.config/waybar/style.css && pkill -USR2 waybar, mode "default"
+     #bindsym Shift+t exec cp -r ~/.themes/tn/style.css ~/.config/waybar/style.css && pkill -USR2 waybar, mode "default"
      bindsym Return mode "default"
      bindsym Escape mode "default"
 
@@ -319,9 +323,23 @@ gaps inner 10
 gaps outer 0
 
 # Sadece birden fazla pencere varsa boşluk
-#smart_gaps on
+smart_gaps on
 
 # Default layout
 workspace_layout default
 exec_always --no-startup-id autotiling
 
+
+#sway confiğine geçiş
+bindsym $mod+Shift+s exec $term -e sudo vim ~/.config/sway/config
+
+
+# Bulanıklık efektini açar
+blur on
+# Bulanıklığın şiddeti
+blur_passes 3
+# Bulanıklık yarıçapı
+blur_radius 5
+
+#for_window [app_id="zen"] opacity 0.8
+#for_window [app_id="zen"] blur enable
