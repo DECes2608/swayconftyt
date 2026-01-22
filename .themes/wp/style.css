@@ -1,0 +1,57 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+/* Ana Bar */
+window#waybar {
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom: 0px solid #1a1b26;
+    color: #c0caf5;
+    transition-property: background-color;
+    transition-duration: 0s;
+}
+
+/* Workspace */
+#workspaces {
+    margin: 4px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #d352fa;
+}
+
+#workspaces button.focused {
+    color: #000000;
+    background-color: #d352fa;
+    border-bottom: 2px solid #840ca8;
+}
+
+#workspaces button.urgent {
+    color: #ffffff;
+}
+
+/* Tüm Modüller İçin Ortak Stil */
+#clock, #battery, #pulseaudio, #network, #cpu, #memory, #backlight, #language, #tray, #custom-mem, #tray{
+    padding: 0 12px;
+    margin: 4px 2px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+/* Özel Renk Vurguları */
+#clock { color: #d352fa; }
+#pulseaudio { color: #d352fa; }
+#battery { color: #d352fa; }
+#battery.charging { color: #840ca8; }
+#battery.critical:not(.charging) { color: #f7768e; }
+#backlight { color: #d352fa; }
+#language { color: #d352fa; }
+#custom-mem { color: #d352fa; }
+
