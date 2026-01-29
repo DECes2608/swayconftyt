@@ -1,6 +1,6 @@
-# Sway Rice ve confiği
+# Sway Rice, Sway ve Niri confiği
 Waybar konfigürasyonu internetten alınmış bir temel üzerine kuruludur, görsel düzenlemeler (style.css) tarafımdan yapılmıştır. Orijinal sahibini hatırlayamadığım için belirtemiyorum.
-Sway confiği tamamen bana ait
+Sway ve Niri confiği tamamen bana ait
 
 
 
