@@ -1,13 +1,68 @@
-# Sway Rice, Sway ve Niri confiği
-Waybar konfigürasyonu internetten alınmış bir temel üzerine kuruludur, görsel düzenlemeler (style.css) tarafımdan yapılmıştır. Orijinal sahibini hatırlayamadığım için belirtemiyorum.
-Sway ve Niri confiği tamamen bana ait
+# 🌊 Sway Configuration
 
+Kişisel Sway window manager yapılandırma dosyalarım.
 
+## ✨ Özellikler
+
+- 🎨 Modern ve minimalist tasarım
+- 🚀 Waybar ile özelleştirilmiş status bar
+- 🔍 Rofi application launcher
+- 🎭 Özel tema desteği
+- ⌨️ Optimize edilmiş kısayollar
+
+## 📦 Bağımlılıklar
+
+Kurulum öncesi aşağıdaki paketlerin yüklü olduğundan emin olun:
+
+```bash
+# Arch Linux / Arch-based distros
+sudo pacman -S sway waybar rofi swaylock swayidle
+```
+
+## 🚀 Kurulum
+
+### 1️⃣ Repository'yi klonlayın
+
+```bash
+git clone https://github.com/DECes2608/swayconftyt.git
+cd swayconftyt
+```
+
+### 2️⃣ Dosyaları kopyalayın
+
+```bash
+# Config dosyalarını kopyala
+cp -r .config/* ~/.config/
+
+# Temaları kopyala
+cp -r .themes ~/
+```
+
+### 3️⃣ Sway'i başlatın
+
+```bash
+sway
+```
+
+## ⚙️ Özelleştirme
+
+Config dosyaları `~/.config/sway/` dizininde bulunur. Kişisel tercihlerinize göre düzenleyebilirsiniz.
+
+## 📝 Notlar
+
+- İlk başlatmada bazı ayarları kişiselleştirmeniz gerekebilir
+- Waybar yapılandırması `~/.config/waybar/` dizinindedir
+- Tema dosyaları `~/.themes/` dizininde bulunur
+
+## 📄 Lisans
+
+Bu proje kişisel kullanım içindir.
+
+---
+
+⭐ Beğendiyseniz yıldız vermeyi unutmayın!
 
 <img width="1921" height="1080" alt="image" src="https://github.com/user-attachments/assets/8b5c2780-e43e-45de-859e-18e61d2227ba" />
-
-
-
 
 ## 📦 Gereksinimler (Dependencies)
 
