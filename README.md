@@ -2,6 +2,8 @@
 
 Kişisel Sway window manager yapılandırma dosyalarım.
 
+<img width="1921" height="1080" alt="image" src="https://github.com/user-attachments/assets/8b5c2780-e43e-45de-859e-18e61d2227ba" />
+
 ## ✨ Özellikler
 
 - 🎨 Modern ve minimalist tasarım
@@ -62,7 +64,6 @@ Bu proje kişisel kullanım içindir.
 
 ⭐ Beğendiyseniz yıldız vermeyi unutmayın!
 
-<img width="1921" height="1080" alt="image" src="https://github.com/user-attachments/assets/8b5c2780-e43e-45de-859e-18e61d2227ba" />
 
 ## 📦 Gereksinimler (Dependencies)
 
@@ -92,8 +93,8 @@ Bu proje kişisel kullanım içindir.
 
 
 
-# sorunlarla ilgili
+## 🐛 Sorunlar ve Destek
 Eğer herhangi bir sorun çıkarsa ve bana yazarsanız size en iyi çözümü veremiyebilirim açıkçası çok iyi veya deneyimli bir kullanıcı değilim ama yinede yazmak isterseniz elimden geldiğince yardım etmeye çalışırım
 
-# öylesine bir söz
+## 💭 Son Söz
 Ben bu confiği yaparken çok eğlendim umarım sizde kullanırken yada değiştirirken eğlenirsiniz :)
