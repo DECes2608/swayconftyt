@@ -91,7 +91,11 @@ Bu proje kişisel kullanım içindir.
 - **Gece Işığı:** `wlsunset`
 
 
+## 🏞️ Wallpaper aracı ile ilgili
+Ben swww ve waypaper ikilisini kullandım ama siz isterseniz swaybg ve waytrogen gibi araçlarda kullanabilirsiniz ama bende waytrogen sıkıntı çıkarttı o yüzden waypaper tercih ettim.
 
+## 🖥️ quickshell ve waybar
+Sway confiğinde yorum satırı olarak quickshellide dahil ettim isteyen kullanabilir ama benim quickshell confiğim malesef yok.
 
 ## 🐛 Sorunlar ve Destek
 Eğer herhangi bir sorun çıkarsa ve bana yazarsanız size en iyi çözümü veremiyebilirim açıkçası çok iyi veya deneyimli bir kullanıcı değilim ama yinede yazmak isterseniz elimden geldiğince yardım etmeye çalışırım
