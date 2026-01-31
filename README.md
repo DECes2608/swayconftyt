@@ -40,10 +40,10 @@ cp -r .config/* ~/.config/
 cp -r .themes ~/
 ```
 
-### 3️⃣ Sway'i başlatın
+### 3️⃣ Sway'i yenileyin
 
 ```bash
-sway
+Meta+Shift+c (sizde değiştirdiyseniz farklı olabilir)
 ```
 
 ## ⚙️ Özelleştirme
