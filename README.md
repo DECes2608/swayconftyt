@@ -18,7 +18,7 @@ Kurulum öncesi aşağıdaki paketlerin yüklü olduğundan emin olun:
 
 ```bash
 # Arch Linux / Arch-based distros
-sudo pacman -S sway waybar rofi swaylock swayidle
+sudo pacman -S sway waybar rofi-wayland swaylock swayidle swww waypaper wlsunset
 ```
 
 ## 🚀 Kurulum
